@@ -6,8 +6,8 @@ Feature: BBC webpage User Sign In
   Background:
     Given user open the BBC homepage for sign in
     When user click the Sign in button
-    And user enter email and continue
-    And user enter password and continue
+    And user enter BBC email and clicks continue
+    And user enter BBC password and clicks continue
     Then user should be signed in successfully
 
   @signin

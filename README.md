@@ -11,7 +11,7 @@ This project tests commenting functionality on BBC Sport articles using **Playwr
    cd bbc-sport-comments-test
 
 2. Dependencies
-   npm
+   npm, node
 
 ### Required
 - `@cucumber/cucumber`
@@ -29,4 +29,5 @@ This project tests commenting functionality on BBC Sport articles using **Playwr
 ## NPM Scripts
 
 - `command to execute` :  npx cucumber-js --world-parameters '{"browser":"<BrowserType>"}' --tags "<TagName>"
+- `Generate report`  : npm run report
 

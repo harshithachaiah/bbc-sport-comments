@@ -30,7 +30,7 @@ Feature: Viewing comments on BBC Sport articles
       | This is an automated test comment |
       | Hello, testing comment box!       |
       | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a    |
-      | Testing special characters !@#$% |
+      | Testing special characters !@#$%!@£$%^&*()_+{}":?><~±!a |
       | 1234567892022                     |
       | 400+ characters Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a    |
 
@@ -57,4 +57,20 @@ Feature: Viewing comments on BBC Sport articles
   When I click the house rules link
   Then a new window should open with URL of house rules
   And the page title should match house rules
+
+
+@automated @likeDislike
+Scenario Outline: Verify user can like or dislike a comment
+  When I click the Sport button in the navigation bar
+  And I count all the articles with the comment icon and click the first one
+  Then I should see the comments section
+  When I click the "<action>" button on comment <commentIndex>
+  
+
+Examples:
+  | action   | commentIndex |
+  | like     | 2            |
+  | dislike  | 2            |
+ 
+
 

@@ -91,7 +91,25 @@ Then('the page title should match house rules', async function () {
     assert.ok(actualTitle.includes(houseRulesPage.title), `Expected title to contain "${houseRulesPage.title}" but got "${actualTitle}"`);
 });
 
+When('I click the {word} button on comment {int}', async function (action, index) {
+    if (!this.articlePage) this.articlePage = new ArticlePage(this.page);
+
+    action = action.replace(/['"]/g, '').toLowerCase();
+
+    let buttonLocator;
+    if (action === 'like') {
+        buttonLocator = this.articlePage.locators.likeButton;
+    } else if (action === 'dislike') {
+        buttonLocator = this.articlePage.locators.dislikeButton;
+    } else {
+        throw new Error(`Unknown action: ${action}`);
+    }
+
+    const buttons = await this.page.$$(buttonLocator);
+    if (buttons.length < index) throw new Error(`${action} button for comment ${index} does not exist`);
+
+    await buttons[index - 1].click();
 
 
-
-
+    await this.page.waitForTimeout(2000);
+});

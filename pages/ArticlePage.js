@@ -57,6 +57,19 @@ class ArticlePage extends BasePage {
         await this.page.selectOption(this.locators.sortDropdown, this.locators.sortOptions[option]);
     }
 
+    async clickLikeOnComment(index = 0) {
+        const buttons = await this.page.$$(this.locators.likeButton);
+        if (buttons.length === 0) throw new Error("No like buttons found");
+        await buttons[index].click();
+    }
+
+    async clickDislikeOnComment(index = 0) {
+        const buttons = await this.page.$$(this.locators.dislikeButton);
+        if (buttons.length === 0) throw new Error("No dislike buttons found");
+        await buttons[index].click();
+    }
+
+
 
 }
 

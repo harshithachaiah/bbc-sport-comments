@@ -1,29 +1,29 @@
 Feature: Viewing comments on BBC Sport articles
   As a logged-in BBC user
-  I want to check if comments are available on a sports article
-  So that I can verify commenting functionality
+  user want to check if comments are available on a sports article
+  So that user can verify commenting functionality
 
   Background:
-    Given I open the BBC homepage for sign in
-    When I click the Sign in button
-    And I enter my BBC email and continue
-    And I enter my BBC password and continue
-    Then I should be signed in successfully
+    Given user open the BBC homepage for sign in
+    When user click the Sign in button
+    And user enter my BBC email and continue
+    And user enter my BBC password and continue
+    Then user should be signed in successfully
 
   @automated @visible
   Scenario: Verify comments are visible on an article with comments enabled
-    When I click the Sport button in the navigation bar
-    And I count all the articles with the comment icon and click the first one
-    Then I should see the comments section
+    When user click the Sport button in the navigation bar
+    And user count all the articles with the comment icon and click the first one
+    Then user should see the comments section
 
   @automated @commentBox
   Scenario Outline: Enter text into the comment box
-    When I click the Sport button in the navigation bar
-    And I count all the articles with the comment icon and click the first one
-    Then I should see the comments section
-    And I enter "<commentText>" into the comment box
-    Then I verify the Post button state
-    Then I cancel my comment
+    When user click the Sport button in the navigation bar
+    And user count all the articles with the comment icon and click the first one
+    Then user should see the comments section
+    And user enter "<commentText>" into the comment box
+    Then user verify the Post button state
+    Then user cancel my comment
 
     Examples:
       | commentText                       |
@@ -36,10 +36,10 @@ Feature: Viewing comments on BBC Sport articles
 
   @automated @sorting
   Scenario Outline: Sort comments using the dropdown
-    When I click the Sport button in the navigation bar
-    And I count all the articles with the comment icon and click the first one
-    Then I should see the comments section
-    When I select "<sortOption>" from the sort dropdown
+    When user click the Sport button in the navigation bar
+    And user count all the articles with the comment icon and click the first one
+    Then user should see the comments section
+    When user select "<sortOption>" from the sort dropdown
     Then the comments should be sorted by "<sortOption>"
 
     Examples:
@@ -51,20 +51,20 @@ Feature: Viewing comments on BBC Sport articles
 
  @automated @houseRules
  Scenario: Click the House Rules link and verify the page opens
-  When I click the Sport button in the navigation bar
-  And I count all the articles with the comment icon and click the first one
-  Then I should see the comments section
-  When I click the house rules link
+  When user click the Sport button in the navigation bar
+  And user count all the articles with the comment icon and click the first one
+  Then user should see the comments section
+  When user click the house rules link
   Then a new window should open with URL of house rules
   And the page title should match house rules
 
 
 @automated @likeDislike
 Scenario Outline: Verify user can like or dislike a comment
-  When I click the Sport button in the navigation bar
-  And I count all the articles with the comment icon and click the first one
-  Then I should see the comments section
-  When I click the "<action>" button on comment <commentIndex>
+  When user click the Sport button in the navigation bar
+  And user count all the articles with the comment icon and click the first one
+  Then user should see the comments section
+  When user click the "<action>" button on comment <commentIndex>
   
 
 Examples:

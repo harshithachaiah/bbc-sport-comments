@@ -7,14 +7,13 @@ const SportPage = require("../../pages/SportPage");
 
 
 
-When("I click the Sport button in the navigation bar", async function () {
+When("user click the Sport button in the navigation bar", async function () {
     if (!this.articlePage) this.articlePage = new ArticlePage(this.page);
     await this.articlePage.clickSportNavButton();
 });
 
 
-When(
-    "I count all the articles with the comment icon and click the first one",
+When("user count all the articles with the comment icon and click the first one",
     async function () {
         if (!this.articlePage) this.articlePage = new ArticlePage(this.page);
         const count = await this.articlePage.clickFirstArticleWithComments();
@@ -22,7 +21,7 @@ When(
     }
 );
 
-Then("I should see the comments section", async function () {
+Then("user should see the comments section", async function () {
     const visible = await this.articlePage.commentsAreVisible();
     if (!visible) throw new Error("Comments section not visible");
 
@@ -30,22 +29,22 @@ Then("I should see the comments section", async function () {
     console.log(`Comments section is visible with count: ${countText}`);
 });
 
-Then("I should not see the comments section", async function () {
+Then("user should not see the comments section", async function () {
     const visible = await this.articlePage.commentsAreVisible();
     if (visible) throw new Error("Comments section should not be visible");
 });
 
-Then(/^I enter "(.+)" into the comment box$/, async function (commentText) {
+Then(/^user enter "(.+)" into the comment box$/, async function (commentText) {
     await this.articlePage.enterComment(commentText);
 });
 
-Then("I cancel my comment", async function () {
+Then("user cancel my comment", async function () {
     await this.articlePage.clickCancelComment();
 });
 
 
 
-When(/^I select "(.+)" from the sort dropdown$/, async function (sortOption) {
+When(/^user select "(.+)" from the sort dropdown$/, async function (sortOption) {
     if (!this.articlePage) this.articlePage = new ArticlePage(this.page);
     await this.articlePage.selectSortOption(sortOption);
 });
@@ -55,7 +54,7 @@ Then(/^the comments should be sorted by "(.+)"$/, async function (sortOption) {
     console.log(`Comments should now be sorted by: ${sortOption}`);
 });
 
-Then("I verify the Post button state", async function () {
+Then("user verify the Post button state", async function () {
     const postButton = await this.page.$(this.articlePage.locators.postButton);
     const commentBox = await this.page.$(this.articlePage.locators.commentBox);
 
@@ -70,7 +69,7 @@ Then("I verify the Post button state", async function () {
 });
 
 
-When('I click the house rules link', async function () {
+When('user click the house rules link', async function () {
     const [newPage] = await Promise.all([
         // wait for the new tab
         this.context.waitForEvent('page'),
@@ -91,7 +90,7 @@ Then('the page title should match house rules', async function () {
     assert.ok(actualTitle.includes(houseRulesPage.title), `Expected title to contain "${houseRulesPage.title}" but got "${actualTitle}"`);
 });
 
-When('I click the {word} button on comment {int}', async function (action, index) {
+When('user click the {word} button on comment {int}', async function (action, index) {
     if (!this.articlePage) this.articlePage = new ArticlePage(this.page);
 
     action = action.replace(/['"]/g, '').toLowerCase();

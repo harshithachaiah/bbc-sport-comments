@@ -7,5 +7,5 @@ This project tests commenting functionality on BBC Sport articles using **Playwr
 ## 🚀 Installation
 
 1. Clone repository:
-   git clone <repo>
+   git clone <https://github.com/harshithachaiah/bbc-sport-comments>
    cd bbc-sport-comments-test

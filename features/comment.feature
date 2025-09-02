@@ -6,8 +6,8 @@ Feature: Viewing comments on BBC Sport articles
   Background:
     Given user open the BBC homepage for sign in
     When user click the Sign in button
-    And user enter my BBC email and continue
-    And user enter my BBC password and continue
+    And user enter BBC email and continue
+    And user enter BBC password and continue
     Then user should be signed in successfully
 
   @automated @visible
